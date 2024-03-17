@@ -5,3 +5,12 @@
 .form-group > label > span {
     font-weight: bold;
 }
+
+.container_user_init {
+    background-image: url('C:\Users\lucia\TFG_SCRUM_Mastery\frontend\public\Fill.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+   }
