@@ -7,11 +7,18 @@ import users from '../../users';
 const Header = () => {
 
     const userName = useSelector(users.selectors.getUserName);
+    const loggedIn = useSelector(users.selectors.isLoggedIn);
+    const navbarClass = loggedIn ? 'navbar-in' : 'jiji';
 
     return (
 
-        <nav className="navbar navbar-expand-lg navbar-light bg-light border">
-            <Link className="navbar-brand" to="/">PA Project</Link>
+        <nav className={`navbar navbar-expand-lg navbar-light bg-*  shadow-lg ${navbarClass}`} >
+            <Link className="navbar-brand text-white" to="/">
+                <div>
+                    <img id="logo" src='Logo_mini.png' height={30} class='pr-3'></img>
+                    SCRUM Mastery
+                </div>
+            </Link>
             <button className="navbar-toggler" type="button" 
                 data-toggle="collapse" data-target="#navbarSupportedContent" 
                 aria-controls="navbarSupportedContent" aria-expanded="false" 
@@ -30,7 +37,7 @@ const Header = () => {
                 
                     <li className="nav-item dropdown">
 
-                        <a className="dropdown-toggle nav-link" href="/"
+                        <a className="dropdown-toggle nav-link text-white" href="/"
                             data-toggle="dropdown">
                             <span className="fa-solid fa-user"></span>&nbsp;
                             {userName}
@@ -56,8 +63,8 @@ const Header = () => {
 
                 <ul className="navbar-nav">
                     <li className="nav-item">
-                        <Link className="nav-link" to="/users/login">
-                            <FormattedMessage id="project.users.Login.title"/>
+                        <Link className="nav-link text-white" to="/users/login">
+                            <FormattedMessage className="text-light" id="project.users.Login.title"/>
                         </Link>
                     </li>
                 </ul>

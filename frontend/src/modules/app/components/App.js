@@ -18,11 +18,16 @@ const App = () => {
     });
 
     return (
-        <div>
+        <div className='container_init fixed-bottom'>
             <Header/>
             <Body/>
+            <br/>
+            <br/>
             <Footer/>
         </div>
+        
+
+
     );
 
 }

@@ -1,7 +1,7 @@
 // eslint-disable-next-line
 export default {
 
-    'project.app.Footer.text': 'PA Project - Area of Telematics Engineering - University of A Coruña',
+    'project.app.Footer.text': 'SCRUM Mastery - Project Management with SCRUM ©',
     'project.app.Header.home': 'Home',
     'project.app.Header.logout': 'Logout',
     'project.app.Home.welcome': 'MiniPortal main page content!',

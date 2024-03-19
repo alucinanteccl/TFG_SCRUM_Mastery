@@ -1,7 +1,7 @@
 // eslint-disable-next-line
 export default {
 
-    'project.app.Footer.text': 'PA Project - Area de Ingeniería Telemática - Universidad de A Coruña',
+    'project.app.Footer.text': 'SCRUM Mastery - Gestión de Proyectos con SCRUM ©',
     'project.app.Header.home': 'Inicio',
     'project.app.Header.logout': 'Salir',
     'project.app.Home.welcome': '¡Contenido de la página principal de PA Project!',

@@ -12,8 +12,7 @@ const Body = () => {
     
    return (
 
-        <div className="container_body">
-            <br/>
+        <div>
             <AppGlobalComponents/>
             <Routes>
                 <Route path="/*" element={<Home/>}/>

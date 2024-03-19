@@ -6,11 +6,63 @@
     font-weight: bold;
 }
 
-.container_user_init {
+.container_init {
     background-image: url('C:\Users\lucia\TFG_SCRUM_Mastery\frontend\public\Fill.png');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     height: 100%;
     width: 100%;
-   }
+    overflow: auto;
+}
+
+.navbar-in{
+    background-color: rgb(91, 26, 83);
+
+}
+
+.logo1 {
+    width: 20%; /* Ajusta el ancho de la imagen al 100% del contenedor */
+    height: auto; /* Asegura que la altura se ajuste proporcionalmente */
+    object-fit: contain;
+}
+
+.card-custom {
+    background-color: rgb(198, 198, 198);
+    height: 60vh;
+    width: 25vw;
+    overflow-y: auto;
+}
+
+.login-card {
+    background-color: rgb(198, 198, 198);
+    height: 45vh;
+    width: 25vw;
+    overflow-y: auto;
+}
+
+
+.signup-card {
+    background-color: rgb(198, 198, 198);
+    height: 78vh;
+    width: 25vw;
+    overflow-y: auto;
+}
+
+.input-user {
+    background-color: rgb(235, 236, 226);
+}
+.input-user:focus {
+    background-color: rgb(235, 236, 226);
+}
+
+.card-custom:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+}
+
+.card-custom-dad {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

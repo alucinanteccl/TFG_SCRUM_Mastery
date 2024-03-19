@@ -1,6 +1,7 @@
 package es.udc.paproject.backend.model.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -8,7 +9,7 @@ import javax.persistence.Id;
 @Entity
 public class User {
 	
-	public enum RoleType {USER};
+	public enum RoleType {SRUM_MASTER,PRODUCT_OWNER,DEVELOPMENT_TEAM};
 
 	private Long id;
 	private String userName;
@@ -17,6 +18,8 @@ public class User {
 	private String lastName;
 	private String email;
 	private RoleType role;
+	@Lob
+	private byte[] image;
 
 	public User() {}
 
@@ -86,6 +89,14 @@ public class User {
 
 	public void setRole(RoleType role) {
 		this.role = role;
+	}
+
+	public byte[] getImage() {
+		return image;
+	}
+
+	public void setImage(byte[] image) {
+		this.image = image;
 	}
 
 }

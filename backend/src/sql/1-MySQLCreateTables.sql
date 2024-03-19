@@ -8,7 +8,7 @@ CREATE TABLE User (
     lastName VARCHAR(60) NOT NULL, 
     email VARCHAR(60) NOT NULL,
     image BLOB,
-    role TINYINT NOT NULL,
+    role TINYINT,
     CONSTRAINT UserPK PRIMARY KEY (id),
     CONSTRAINT UserNameUniqueKey UNIQUE (userName)
 ) ENGINE = InnoDB;

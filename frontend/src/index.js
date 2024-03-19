@@ -15,6 +15,7 @@ import {App} from './modules/app';
 import backend from './backend';
 import {NetworkError} from './backend';
 import app from './modules/app';
+import user from './modules/users';
 import {initReactIntl} from './i18n';
 import './styles.css';
 
