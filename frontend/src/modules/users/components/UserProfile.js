@@ -98,19 +98,19 @@ const UserProfile = () => {
                             {user.lastName}
                         </label>
                         <label htmlFor="firstName" className="col-md-12 col-form-label font-weight-bold">
-                            <FormattedMessage id="project.global.fields.userName" />
+                            <FormattedMessage id="project.global.fields.userName" />:
                         </label>
                         <label htmlFor="firstName" className="col-md-12 col-form-label">
                             {user.userName}
                         </label>
                         <label htmlFor="firstName" className="col-md-12 col-form-label font-weight-bold">
-                            <FormattedMessage id="project.global.fields.email" />
+                            <FormattedMessage id="project.global.fields.email" />:
                         </label>
                         <label htmlFor="firstName" className="col-md-12 col-form-label">
                             {user.email}
                         </label>
                         <label htmlFor="firstName" className="col-md-12 col-form-label font-weight-bold">
-                            <FormattedMessage id="project.global.fields.role" />
+                            <FormattedMessage id="project.global.fields.role" />:
                         </label>
                         <form ref={node => formrole = node} className="needs-validation" noValidate>
                             <div class="dropdown">
@@ -118,11 +118,10 @@ const UserProfile = () => {
                                     {user.role}
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <text class="dropdown-item" onClick={() => handleSubmitRole("d")}>Development team</text>
-                                    <text class="dropdown-item" href="#" onClick={() => handleSubmitRole("s")}>SCRUM master</text>
-                                    <text class="dropdown-item" href="#" onClick={() => handleSubmitRole("p")}>Product owner</text>
+                                    <label class="dropdown-item" onClick={() => handleSubmitRole("d")}>Development team</label>
+                                    <label class="dropdown-item" onClick={() => handleSubmitRole("s")}>SCRUM master</label>
+                                    <label class="dropdown-item" onClick={() => handleSubmitRole("p")}>Product owner</label>
                                 </div>
-
                             </div>
                         </form>
 

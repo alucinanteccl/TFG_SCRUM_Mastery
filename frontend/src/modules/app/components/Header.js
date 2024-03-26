@@ -40,10 +40,10 @@ const Header = () => {
 
                             <a className="dropdown-toggle nav-link text-white" href="/"
                                 data-toggle="dropdown">
-                                {user.img ?
-                                <span className="fa-solid fa-user"></span>
-                                :
-                                <img src={"data:image/jpg;base64," + user.image} alt="" class="rounded-circle miniimage shadow-4-strong" ></img>
+                                {user.image ?
+                                    <img src={"data:image/jpg;base64," + user.image} alt="" class="rounded-circle miniimage shadow-4-strong"></img>
+                                    :
+                                    <span className="fa-solid fa-user"></span>
                                 }
                                 &nbsp;
                                 {userName}
