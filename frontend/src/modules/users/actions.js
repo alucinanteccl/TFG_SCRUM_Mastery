@@ -39,13 +39,13 @@ export const tryLoginFromServiceToken = reauthenticationCallback => dispatch =>
         },
         reauthenticationCallback
     );
-    
+
 
 export const logout = () => {
 
     backend.userService.logout();
 
-    return {type: actionTypes.LOGOUT};
+    return { type: actionTypes.LOGOUT };
 
 };
 
@@ -55,12 +55,37 @@ export const updateProfileCompleted = user => ({
 })
 
 export const updateProfile = (user, onSuccess, onErrors) => dispatch =>
-    backend.userService.updateProfile(user, 
+    backend.userService.updateProfile(user,
         user => {
             dispatch(updateProfileCompleted(user));
             onSuccess();
         },
         onErrors);
+
+export const changeImageCompleted = user => ({
+    type: actionTypes.CHANGE_IMAGE_COMPLETED,
+    user
+})
+
+export const changeImage = (user, file, onSuccess, onErrors) => dispatch =>
+    backend.userService.changeUserImage(user, file,
+        (user) => {
+            dispatch(changeImageCompleted(user));
+            onSuccess();
+        },
+        onErrors);
+
+export const changeRoleCompleted = user => ({
+    type: actionTypes.CHANGE_ROLE_COMPLETED,
+    user
+})
+
+export const changeRole = (user, role, onSuccess, onErrors) => dispatch =>
+    backend.userService.changeRole(user.id, role,
+        (user) => {
+            dispatch(changeRoleCompleted(user));
+            onSuccess();
+        }, onErrors);
 
 export const changePassword = (id, oldPassword, newPassword, onSuccess, onErrors) => dispatch =>
     backend.userService.changePassword(id, oldPassword, newPassword, onSuccess, onErrors);

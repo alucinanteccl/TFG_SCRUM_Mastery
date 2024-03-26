@@ -16,14 +16,27 @@
     overflow: auto;
 }
 
+.container_init_in {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+}
+
+.summary {
+    height: 85vh;
+    overflow: auto;
+}
+
 .navbar-in{
     background-color: rgb(91, 26, 83);
-
 }
 
 .logo1 {
-    width: 20%; /* Ajusta el ancho de la imagen al 100% del contenedor */
-    height: auto; /* Asegura que la altura se ajuste proporcionalmente */
+    width: 20%; 
+    height: auto; 
     object-fit: contain;
 }
 
@@ -33,10 +46,13 @@
     width: 25vw;
     overflow-y: auto;
 }
+.contact_btn{
+    background-color: rgb(198, 198, 198);
+}
 
 .login-card {
     background-color: rgb(198, 198, 198);
-    height: 45vh;
+    height: 40vh;
     width: 25vw;
     overflow-y: auto;
 }
@@ -44,16 +60,91 @@
 
 .signup-card {
     background-color: rgb(198, 198, 198);
-    height: 78vh;
+    height: 72vh;
     width: 25vw;
     overflow-y: auto;
 }
+
+.updateprofile-card {
+    border-color: rgb(198, 198, 198);
+    background-color: rgb(198, 198, 198);
+    height: 45vh;
+    width: 25vw;
+    overflow-y: auto;
+}
+
+.userprofile-card {
+    border-color: rgb(198, 198, 198);
+    background-color: rgb(198, 198, 198);
+    height: 55vh;
+    width: 45vw;
+    overflow-y: auto;
+}
+
+.image-container {
+    position: relative;
+    width: 250px; 
+    height: 250px; 
+    border-radius: 50%; 
+    box-shadow: none;
+    outline: none;
+    border: none;
+
+}
+
+.miniimage {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
+
+.image-container:focus {
+    position: relative;
+    width: 250px; 
+    height: 250px; 
+    border-radius: 50%; 
+    box-shadow: none;
+    outline: none;
+    border: none;
+    
+}
+
+.image-container img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    box-shadow: none;
+    outline: none;
+    border: none;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    transform: scale(0.7);
+    box-shadow: none;
+    outline: none;
+    border: none;
+}
+
+.image-container:hover .overlay {
+    opacity: 1;
+    box-shadow: none;
+    outline: none;
+    border: none;
+}
+
 
 .input-user {
     background-color: rgb(235, 236, 226);
 }
 .input-user:focus {
     background-color: rgb(235, 236, 226);
+    box-shadow: 0 0 0 2px darkgray;
+    
 }
 
 .card-custom:hover {
@@ -65,4 +156,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.btn-color{
+    background-color: blueviolet;
+    border-color: blueviolet;
+}
+
+.btn-color:hover, .btn-color:focus, .btn-color:active, .btn-color.active, .open > .dropdown-toggle.btn-color {
+    background-color: rgb(166, 99, 181); 
+    border-color:  rgb(166, 99, 181); 
+}
+
+.text-purple{
+    color: blueviolet;
 }

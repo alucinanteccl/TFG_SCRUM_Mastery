@@ -42,7 +42,7 @@ const handle4xxResponse = (response, onErrors) => {
         return false;
     }
 
-    if (response.status === 401 && reauthenticationCallback){
+    if (response.status === 401 && reauthenticationCallback) {
         reauthenticationCallback();
         return true;
     }
@@ -65,6 +65,8 @@ const handle4xxResponse = (response, onErrors) => {
 
 }
 
+
+
 const handleResponse = (response, onSuccess, onErrors) => {
 
     if (handleOkResponse(response, onSuccess)) {
@@ -76,20 +78,47 @@ const handleResponse = (response, onSuccess, onErrors) => {
     }
 
     throw new NetworkError();
-    
+
 }
 
 export const init = callback => networkErrorCallback = callback;
 
 export const setReauthenticationCallback = callback => reauthenticationCallback = callback;
 
-export const setServiceToken = serviceToken => 
+export const setServiceToken = serviceToken =>
     sessionStorage.setItem(SERVICE_TOKEN_NAME, serviceToken);
 
 export const getServiceToken = () => sessionStorage.getItem(SERVICE_TOKEN_NAME);
 
-export const removeServiceToken = () => 
+export const removeServiceToken = () =>
     sessionStorage.removeItem(SERVICE_TOKEN_NAME);
+
+export const fetchConfig = (method, body) => {
+    const fConfig = {
+        method: method,
+    };
+
+    if (body) {
+        if (body instanceof FormData) {
+            fConfig.body = body;
+        } else {
+            fConfig.headers = { "Content-Type": "application/json" };
+            fConfig.body = JSON.stringify(body);
+        }
+    }
+
+    const serviceToken = getServiceToken();
+
+    if (serviceToken) {
+        if (fConfig.headers) {
+            fConfig.headers["Authorization"] = `Bearer ${serviceToken}`;
+        } else {
+            fConfig.headers = { Authorization: `Bearer ${serviceToken}` };
+        }
+    }
+
+    return fConfig;
+};
 
 export const config = (method, body) => {
 
@@ -100,8 +129,8 @@ export const config = (method, body) => {
     if (body) {
         if (body instanceof FormData) {
             config.body = body;
-        } else  {
-            config.headers = {'Content-Type': 'application/json'};
+        } else {
+            config.headers = { 'Content-Type': 'application/json' };
             config.body = JSON.stringify(body);
         }
     }
@@ -113,7 +142,7 @@ export const config = (method, body) => {
         if (config.headers) {
             config.headers['Authorization'] = `Bearer ${serviceToken}`;
         } else {
-            config.headers = {'Authorization': `Bearer ${serviceToken}`};
+            config.headers = { 'Authorization': `Bearer ${serviceToken}` };
         }
 
     }
@@ -121,6 +150,7 @@ export const config = (method, body) => {
     return config;
 
 }
+
 
 export const appFetch = (path, options, onSuccess, onErrors) =>
     fetch(`${process.env.REACT_APP_BACKEND_URL}${path}`, options)

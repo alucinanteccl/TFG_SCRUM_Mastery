@@ -30,6 +30,10 @@ spring:
       use-sql-comments: true
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
 project:
   jwt:
     signKey: Bu:GW8bgPlEw

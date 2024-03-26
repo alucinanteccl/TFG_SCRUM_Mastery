@@ -4,7 +4,6 @@ export default {
     'project.app.Footer.text': 'SCRUM Mastery - Xestión de Proxectos con SCRUM ©',
     'project.app.Header.home': 'Inicio',
     'project.app.Header.logout': 'Saír',
-    'project.app.Home.welcome': '¡Contido da páxina principal de PA Project!',
     
     'project.common.ErrorDialog.title': 'Erro',
 
@@ -19,10 +18,9 @@ export default {
     'project.global.fields.email': 'Correo electrónico',
     'project.global.fields.firstName': 'Nome',
     'project.global.fields.lastName': 'Apelidos',
+    'project.global.fields.role': 'Rol',
     'project.global.fields.name': 'Nome',
     'project.global.fields.password': 'Contrasinal',
-    'project.global.fields.postalAddress': 'Dirección postal',
-    'project.global.fields.postalCode': 'Código postal',
     'project.global.fields.userName': 'Usuario',
     'project.global.validator.email': 'Introduzca unha dirección de correo electrónico correcta',
     'project.global.validator.passwordsDoNotMatch': 'As contrasinais non coinciden',
@@ -35,6 +33,7 @@ export default {
     'project.users.Login.title': 'Autenticarse',
     'project.users.SignUp.fields.confirmPassword': 'Confirmar contrasinal',
     'project.users.SignUp.title': 'Rexistrarse',
-    'project.users.UpdateProfile.title': 'Actualizar perfil'
+    'project.users.UpdateProfile.title': 'Actualizar perfil',
+    'project.users.MyProfile.title': 'O meu perfil'
 
 }

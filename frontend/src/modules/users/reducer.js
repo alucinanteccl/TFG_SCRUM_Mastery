@@ -1,4 +1,4 @@
-import {combineReducers} from 'redux';
+import { combineReducers } from 'redux';
 
 import * as actionTypes from './actionTypes';
 
@@ -20,6 +20,12 @@ const user = (state = initialState.user, action) => {
             return initialState.user;
 
         case actionTypes.UPDATE_PROFILE_COMPLETED:
+            return action.user;
+
+        case actionTypes.CHANGE_IMAGE_COMPLETED:
+            return action.user;
+
+        case actionTypes.CHANGE_ROLE_COMPLETED:
             return action.user;
 
         default:

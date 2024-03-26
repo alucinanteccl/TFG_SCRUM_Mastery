@@ -4,7 +4,6 @@ export default {
     'project.app.Footer.text': 'SCRUM Mastery - Project Management with SCRUM ©',
     'project.app.Header.home': 'Home',
     'project.app.Header.logout': 'Logout',
-    'project.app.Home.welcome': 'MiniPortal main page content!',
 
     'project.common.ErrorDialog.title': 'Error',
 
@@ -19,10 +18,9 @@ export default {
     'project.global.fields.email': 'Email address',
     'project.global.fields.firstName': 'First name',
     'project.global.fields.lastName': 'Last name',
+    'project.global.fields.role': 'Role',
     'project.global.fields.name': 'Name',
     'project.global.fields.password': 'Password',
-    'project.global.fields.postalAddress': 'Postal address',
-    'project.global.fields.postalCode': 'Postal code',
     'project.global.fields.userName': 'Username',
     'project.global.validator.email': 'Provide a correct e-mail address',
     'project.global.validator.passwordsDoNotMatch': 'Passwords do not match',
@@ -35,6 +33,7 @@ export default {
     'project.users.Login.title': 'Login',
     'project.users.SignUp.fields.confirmPassword': 'Confirm password',
     'project.users.SignUp.title': 'Sign up',
-    'project.users.UpdateProfile.title': 'Update profile'
+    'project.users.UpdateProfile.title': 'Update profile',
+    'project.users.MyProfile.title': 'My profile'
 
 }

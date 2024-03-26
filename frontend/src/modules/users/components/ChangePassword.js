@@ -65,19 +65,15 @@ const ChangePassword = () => {
     return (
         <div>
             <Errors errors={backendErrors} onClose={() => setBackendErrors(null)}/>
-            <div className="card bg-light border-dark">
-                <h5 className="card-header">
-                    <FormattedMessage id="project.users.ChangePassword.title"/>
-                </h5>
+            <div className="card updateprofile-card mx-auto m-5 ">
                 <div className="card-body">
                     <form ref={node => form = node} 
                         className="needs-validation" noValidate onSubmit={e => handleSubmit(e)}>
-                        <div className="form-group row">
-                            <label htmlFor="oldPassword" className="col-md-3 col-form-label">
+                            <label htmlFor="oldPassword" className="col-md-12 col-form-label">
                                 <FormattedMessage id="project.users.ChangePassword.fields.oldPassword"/>
                             </label>
-                            <div className="col-md-4">
-                                <input type="password" id="oldPassword" className="form-control"
+                            <div className="col-md-12">
+                                <input type="password" id="oldPassword" className="form-control input-user"
                                     value={oldPassword}
                                     onChange={e => setOldPassword(e.target.value)}
                                     autoFocus
@@ -86,13 +82,11 @@ const ChangePassword = () => {
                                     <FormattedMessage id='project.global.validator.required'/>
                                 </div>
                             </div>
-                        </div>
-                        <div className="form-group row">
-                            <label htmlFor="newPassword" className="col-md-3 col-form-label">
+                            <label htmlFor="newPassword" className="col-md-12 col-form-label">
                                 <FormattedMessage id="project.users.ChangePassword.fields.newPassword"/>
                             </label>
-                            <div className="col-md-4">
-                                <input type="password" id="newPassword" className="form-control"
+                            <div className="col-md-12">
+                                <input type="password" id="newPassword" className="form-control input-user"
                                     value={newPassword}
                                     onChange={e => setNewPassword(e.target.value)}
                                     required/>
@@ -100,14 +94,12 @@ const ChangePassword = () => {
                                     <FormattedMessage id='project.global.validator.required'/>
                                 </div>
                             </div>
-                        </div>
-                        <div className="form-group row">
-                            <label htmlFor="confirmNewPassword" className="col-md-3 col-form-label">
+                            <label htmlFor="confirmNewPassword" className="col-md-12 col-form-label">
                                 <FormattedMessage id="project.users.ChangePassword.fields.confirmNewPassword"/>
                             </label>
-                            <div className="col-md-4">
+                            <div className="col-md-12">
                                 <input ref={node => confirmNewPasswordInput = node}
-                                    type="password" id="confirmNewPassword" className="form-control"
+                                    type="password" id="confirmNewPassword" className="form-control input-user"
                                     value={confirmNewPassword}
                                     onChange={e => handleConfirmNewPasswordChange(e)}
                                     required/>
@@ -115,17 +107,14 @@ const ChangePassword = () => {
                                     {passwordsDoNotMatch ?
                                         <FormattedMessage id='project.global.validator.passwordsDoNotMatch'/> :
                                         <FormattedMessage id='project.global.validator.required'/>}
-                                    
                                 </div>
                             </div>
-                        </div>
-                        <div className="form-group row">
-                            <div className="offset-md-3 col-md-1">
-                                <button type="submit" className="btn btn-primary">
+                            <br></br>
+                            <div className="text-center">
+                                <button type="submit" className="btn btn-primary btn-color">
                                     <FormattedMessage id="project.global.buttons.save"/>
                                 </button>
                             </div>
-                        </div>
                     </form>
                 </div>
             </div>

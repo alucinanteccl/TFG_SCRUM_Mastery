@@ -14,6 +14,8 @@ import es.udc.paproject.backend.model.exceptions.IncorrectPasswordException;
 import es.udc.paproject.backend.model.services.UserService;
 
 import static org.junit.jupiter.api.Assertions.*;
+import java.awt.image.ImagingOpException;
+import org.springframework.mock.web.MockMultipartFile;
 
 @SpringBootTest
 @ActiveProfiles("test")
@@ -39,7 +41,7 @@ public class UserServiceTest {
 		User loggedInUser = userService.loginFromId(user.getId());
 		
 		assertEquals(user, loggedInUser);
-		assertEquals(null, user.getRole());
+		assertEquals(User.RoleType.DEVELOPMENT_TEAM, user.getRole());
 		
 	}
 	
@@ -146,6 +148,48 @@ public class UserServiceTest {
 		assertThrows(IncorrectPasswordException.class, () ->
 			userService.changePassword(user.getId(), 'Y' + oldPassword, newPassword));
 		
+	}
+
+	@Test
+	public void testChangeNullImage() throws InstanceNotFoundException, ImagingOpException, DuplicateInstanceException {
+		User user = new User();
+		user.setUserName("josealonso");
+		user.setPassword("pwd");
+		user.setFirstName("Jose");
+		user.setLastName("Alonso");
+		user.setEmail("jose.alonso@udc.es");
+		user.setImage("josealonso".getBytes());
+
+		userService.signUp(user);
+
+		User loggedInUser = userService.loginFromId(user.getId());
+
+		assertThrows(InstanceNotFoundException.class, () -> {
+			userService.changeImage(user.getId(), null);
+		});
+	}
+
+	@Test
+	public void testAddImage() throws Exception {
+		User user = new User();
+		user.setUserName("josealonso");
+		user.setPassword("pwd");
+		user.setFirstName("Jose");
+		user.setLastName("Alonso");
+		user.setEmail("jose.alonso@udc.es");
+		user.setImage("josealonso".getBytes());
+
+		userService.signUp(user);
+
+		User loggedInUser = userService.loginFromId(user.getId());
+
+		byte[] imageContent = "fake image content".getBytes();
+		MockMultipartFile image = new MockMultipartFile("image", "image.png", "image/png", imageContent);
+
+		userService.changeImage(user.getId(), image);
+
+		User updatedUser = userService.loginFromId(user.getId());
+		assertNotNull(updatedUser.getImage());
 	}
 
 }

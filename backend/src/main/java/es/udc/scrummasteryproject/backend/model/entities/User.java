@@ -9,7 +9,7 @@ import javax.persistence.Id;
 @Entity
 public class User {
 	
-	public enum RoleType {SRUM_MASTER,PRODUCT_OWNER,DEVELOPMENT_TEAM};
+	public enum RoleType {SCRUM_MASTER,PRODUCT_OWNER,DEVELOPMENT_TEAM};
 
 	private Long id;
 	private String userName;

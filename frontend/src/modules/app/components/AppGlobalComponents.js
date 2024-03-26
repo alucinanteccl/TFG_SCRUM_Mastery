@@ -23,7 +23,6 @@ const ConnectedLoader = () => {
 };
 
 const AppGlobalComponents = () => (
-
     <div>
         <ConnectedErrorDialog/>
         <ConnectedLoader/>

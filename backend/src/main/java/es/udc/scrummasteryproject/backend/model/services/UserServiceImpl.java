@@ -1,6 +1,7 @@
 package es.udc.paproject.backend.model.services;
 
 import java.util.Optional;
+import java.io.IOException;
 
 import es.udc.paproject.backend.model.exceptions.IncorrectLoginException;
 import es.udc.paproject.backend.model.exceptions.IncorrectPasswordException;
@@ -13,6 +14,7 @@ import es.udc.paproject.backend.model.exceptions.DuplicateInstanceException;
 import es.udc.paproject.backend.model.exceptions.InstanceNotFoundException;
 import es.udc.paproject.backend.model.entities.User;
 import es.udc.paproject.backend.model.entities.UserDao;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 @Transactional
@@ -89,6 +91,42 @@ public class UserServiceImpl implements UserService {
 			user.setPassword(passwordEncoder.encode(newPassword));
 		}
 		
+	}
+
+	@Override
+	public User changeRole(Long id, String role)
+		throws InstanceNotFoundException {
+		
+		User user = permissionChecker.checkUser(id);
+		
+		if("d".equals(role)){
+			user.setRole(User.RoleType.DEVELOPMENT_TEAM);
+		}else{
+			if("s".equals(role)){
+				user.setRole(User.RoleType.SCRUM_MASTER);
+			}else{
+				if("p".equals(role)){
+					user.setRole(User.RoleType.PRODUCT_OWNER);
+					System.out.println(user.getRole().toString());
+				}
+			}
+		}	
+
+		return user;
+	}
+
+	
+	@Override
+	public User changeImage(Long id, MultipartFile image) throws InstanceNotFoundException, IOException {
+
+		if (image == null) {
+			throw new InstanceNotFoundException("User image not found", null);
+		}
+
+		User user = permissionChecker.checkUser(id);
+		user.setImage(image.getBytes());
+
+		return user;
 	}
 
 }

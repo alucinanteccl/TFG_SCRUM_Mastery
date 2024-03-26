@@ -17,10 +17,11 @@ public class UserDto {
 	private String lastName;
 	private String email;
 	private String role;
+	private byte[] image;
 
 	public UserDto() {}
 
-	public UserDto(Long id, String userName, String firstName, String lastName, String email, String role) {
+	public UserDto(Long id, String userName, String firstName, String lastName, String email, String role, byte[] image) {
 
 		this.id = id;
 		this.userName = userName != null ? userName.trim() : null;
@@ -28,6 +29,7 @@ public class UserDto {
 		this.lastName = lastName.trim();
 		this.email = email.trim();
 		this.role = role;
+		this.image = image;
 		
 	}
 
@@ -96,6 +98,14 @@ public class UserDto {
 
 	public void setRole(String role) {
 		this.role = role;
+	}
+
+	public byte[] getImage() {
+		return image;
+	}
+
+	public void setImage(byte[] image) {
+		this.image = image;
 	}
 
 }

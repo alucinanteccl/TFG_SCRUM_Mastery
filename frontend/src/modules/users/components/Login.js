@@ -25,7 +25,7 @@ const Login = () => {
             dispatch(actions.login(
                 userName.trim(),
                 password,
-                () => navigate('/'),
+                () => navigate('/projects/summary'),
                 errors => setBackendErrors(errors),
                 () => {
                     navigate('/users/login');
@@ -44,15 +44,12 @@ const Login = () => {
         <div>
             <Errors errors={backendErrors} onClose={() => setBackendErrors(null)} />
             <div className="card mx-auto m-5 border-dark login-card">
-                <h5 className="card-header">
-                    <FormattedMessage id="project.users.Login.title" />
-                </h5>
                 <div className="card-body">
                     <form ref={node => form = node}
                         className="needs-validation" noValidate
                         onSubmit={e => handleSubmit(e)}>
 
-                        <label htmlFor="userName" className="col-md-4 col-form-label">
+                        <label htmlFor="userName" className="col-md-12 col-form-label">
                             <FormattedMessage id="project.global.fields.userName" />
                         </label>
                         <div className="col-md-12">
@@ -64,9 +61,8 @@ const Login = () => {
                             <div className="invalid-feedback">
                                 <FormattedMessage id='project.global.validator.required' />
                             </div>
-
                         </div>
-                        <label htmlFor="password" className="col-md-4 col-form-label">
+                        <label htmlFor="password" className="col-md-12 col-form-label">
                             <FormattedMessage id="project.global.fields.password" />
                         </label>
                         <div className="col-md-12">
@@ -81,14 +77,14 @@ const Login = () => {
                         <br></br>
                         <div className="text-center">
                             <div className="">
-                                <button type="submit" className="btn btn-primary">
+                                <button type="submit" className="btn btn-primary btn-color">
                                     <FormattedMessage id="project.users.Login.title" />
                                 </button>
                             </div>
                         </div>
                         <br></br>
-                        <p className="text-center">
-                            <Link to="/users/signup">
+                        <p className="text-center text-purple">
+                            <Link to="/users/signup" className='text-purple'>
                                 <FormattedMessage id="project.users.SignUp.title" />
                             </Link>
                         </p>

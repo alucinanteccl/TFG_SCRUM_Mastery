@@ -1,5 +1,5 @@
 import {useEffect} from 'react';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 import Header from './Header';
 import Body from './Body';
@@ -16,18 +16,18 @@ const App = () => {
             () => dispatch(users.actions.logout())));
     
     });
+    
+    const loggedIn = useSelector(users.selectors.isLoggedIn);
+    const bgClass = loggedIn ? 'container_init_in' : 'container_init';
 
     return (
-        <div className='container_init fixed-bottom'>
+        <div className={`fixed-bottom ${bgClass}`}>
             <Header/>
             <Body/>
             <br/>
             <br/>
             <Footer/>
         </div>
-        
-
-
     );
 
 }

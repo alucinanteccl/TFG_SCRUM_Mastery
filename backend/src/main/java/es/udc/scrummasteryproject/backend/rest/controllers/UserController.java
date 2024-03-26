@@ -6,6 +6,7 @@ import static es.udc.paproject.backend.rest.dtos.UserConversor.toUserDto;
 
 import java.net.URI;
 import java.util.Locale;
+import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -19,10 +20,13 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.springframework.web.multipart.MultipartFile;
 
 import es.udc.paproject.backend.model.exceptions.DuplicateInstanceException;
 import es.udc.paproject.backend.model.exceptions.InstanceNotFoundException;
@@ -36,8 +40,10 @@ import es.udc.paproject.backend.rest.common.JwtGenerator;
 import es.udc.paproject.backend.rest.common.JwtInfo;
 import es.udc.paproject.backend.rest.dtos.AuthenticatedUserDto;
 import es.udc.paproject.backend.rest.dtos.ChangePasswordParamsDto;
+import es.udc.paproject.backend.rest.dtos.ChangeRoleParamsDto;
 import es.udc.paproject.backend.rest.dtos.LoginParamsDto;
 import es.udc.paproject.backend.rest.dtos.UserDto;
+import es.udc.paproject.backend.rest.dtos.UserConversor;
 
 @RestController
 @RequestMapping("/users")
@@ -141,6 +147,28 @@ public class UserController {
 		
 		userService.changePassword(id, params.getOldPassword(), params.getNewPassword());
 		
+	}
+
+	@PostMapping("/{id}/changeRole")
+	public UserDto changeRole(@RequestAttribute Long userId, @PathVariable Long id, @RequestBody ChangeRoleParamsDto params) 
+    	throws PermissionException, InstanceNotFoundException, IncorrectPasswordException {
+    
+    	if (!id.equals(userId)) {
+        	throw new PermissionException();
+    	}
+		
+    	User user = userService.changeRole(id, params.getRole());
+		return UserConversor.toUserDto(user);
+	}
+
+	@PutMapping("/{id}/changeImage")
+	public UserDto changeImage(@RequestAttribute Long userId, @PathVariable Long id,  @RequestPart("file") MultipartFile file) throws InstanceNotFoundException, PermissionException,IOException{
+		if (!id.equals(userId)) {
+			throw new PermissionException();
+		}
+		User user = userService.changeImage(id, file);
+		
+		return UserConversor.toUserDto(user);
 	}
 	
 	private String generateServiceToken(User user) {

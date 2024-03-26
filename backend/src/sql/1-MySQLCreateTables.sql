@@ -7,7 +7,7 @@ CREATE TABLE User (
     firstName VARCHAR(60) NOT NULL,
     lastName VARCHAR(60) NOT NULL, 
     email VARCHAR(60) NOT NULL,
-    image BLOB,
+    image MEDIUMBLOB,
     role TINYINT,
     CONSTRAINT UserPK PRIMARY KEY (id),
     CONSTRAINT UserNameUniqueKey UNIQUE (userName)
