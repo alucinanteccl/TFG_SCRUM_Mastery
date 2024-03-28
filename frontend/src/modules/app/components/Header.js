@@ -41,7 +41,14 @@ const Header = () => {
                             <a className="dropdown-toggle nav-link text-white" href="/"
                                 data-toggle="dropdown">
                                 {user.image ?
-                                    <img src={"data:image/jpg;base64," + user.image} alt="" class="rounded-circle miniimage shadow-4-strong"></img>
+                                    <div className='miniimage-container'>
+                                        <img src={"data:image/jpg;base64," + user.image} alt="" class="rounded-circle miniimage shadow-4-strong"></img>
+                                        <div class="user-popup">
+                                            <img src={"data:image/jpg;base64," + user.image} alt="" class="rounded-circle miniimage shadow-4-strong"></img>
+                                            <p className='mt-1'>Nombre: {user.userName}</p>
+                                            <p>Email: {user.email}</p>
+                                        </div>
+                                    </div>
                                     :
                                     <span className="fa-solid fa-user"></span>
                                 }

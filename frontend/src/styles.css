@@ -2,7 +2,7 @@
     text-align: center;
 }
 
-.form-group > label > span {
+.form-group>label>span {
     font-weight: bold;
 }
 
@@ -26,17 +26,17 @@
 }
 
 .summary {
-    height: 85vh;
+    height: 78vh;
     overflow: auto;
 }
 
-.navbar-in{
+.navbar-in {
     background-color: rgb(91, 26, 83);
 }
 
 .logo1 {
-    width: 20%; 
-    height: auto; 
+    width: 20%;
+    height: auto;
     object-fit: contain;
 }
 
@@ -46,7 +46,8 @@
     width: 25vw;
     overflow-y: auto;
 }
-.contact_btn{
+
+.contact_btn {
     background-color: rgb(198, 198, 198);
 }
 
@@ -83,13 +84,18 @@
 
 .image-container {
     position: relative;
-    width: 250px; 
-    height: 250px; 
-    border-radius: 50%; 
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
     box-shadow: none;
     outline: none;
     border: none;
 
+}
+
+.miniimage-container {
+    position: relative;
+    display: inline-block;
 }
 
 .miniimage {
@@ -98,15 +104,45 @@
     object-fit: cover;
 }
 
+.user-popup {
+    visibility: hidden;
+    width: 200px;
+    /* Adjust as needed */
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    /* Position the pop-up below the image */
+    left: 50%;
+    /* Center the pop-up horizontally */
+    transform: translateX(-70%);
+    /* Adjust the horizontal position */
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.miniimage-container:hover .user-popup {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+
+
+
 .image-container:focus {
     position: relative;
-    width: 250px; 
-    height: 250px; 
-    border-radius: 50%; 
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
     box-shadow: none;
     outline: none;
     border: none;
-    
+
 }
 
 .image-container img {
@@ -141,10 +177,11 @@
 .input-user {
     background-color: rgb(235, 236, 226);
 }
+
 .input-user:focus {
     background-color: rgb(235, 236, 226);
     box-shadow: 0 0 0 2px darkgray;
-    
+
 }
 
 .card-custom:hover {
@@ -158,16 +195,54 @@
     align-items: center;
 }
 
-.btn-color{
+.btn-color {
     background-color: blueviolet;
     border-color: blueviolet;
 }
 
-.btn-color:hover, .btn-color:focus, .btn-color:active, .btn-color.active, .open > .dropdown-toggle.btn-color {
-    background-color: rgb(166, 99, 181); 
-    border-color:  rgb(166, 99, 181); 
+.btn-color:hover,
+.btn-color:focus,
+.btn-color:active,
+.btn-color.active,
+.open>.dropdown-toggle.btn-color {
+    background-color: rgb(166, 99, 181);
+    border-color: rgb(166, 99, 181);
 }
 
-.text-purple{
+.text-purple {
     color: blueviolet;
+}
+
+@keyframes oscillate {
+    from {
+        transform: translateY(2px);
+    }
+
+    to {
+        transform: translateY(-2px);
+    }
+}
+
+.flag {
+    display: flex;
+    height: 17px;
+    width: 38px;
+    aspect-ratio: 3 / 2;
+}
+
+.column {
+    flex: 1;
+    background: linear-gradient(to bottom,
+            hsl(0, 98%, 51%) 0%,
+            hsl(30, 100%, 50%) 20%,
+            hsl(54, 100%, 50%) 40%,
+            hsl(102, 100%, 50%) 60%,
+            hsl(213, 100%, 50%) 70%,
+            hsl(293, 100%, 50%) 80%,
+            hsl(321, 100%, 50%) 100%);
+
+    animation: oscillate 500ms infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: backwards;
 }
