@@ -19,6 +19,7 @@ export default {
     'project.global.fields.firstName': 'Nome',
     'project.global.fields.lastName': 'Apelidos',
     'project.global.fields.role': 'Rol',
+    'project.global.fields.language': 'Idioma',
     'project.global.fields.name': 'Nome',
     'project.global.fields.password': 'Contrasinal',
     'project.global.fields.userName': 'Usuario',

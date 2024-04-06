@@ -12,6 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import es.udc.paproject.backend.model.exceptions.DuplicateInstanceException;
 import es.udc.paproject.backend.model.exceptions.InstanceNotFoundException;
+import es.udc.paproject.backend.model.exceptions.IncorrectLanguageException;
+import es.udc.paproject.backend.model.exceptions.IncorrectRoleException;
 import es.udc.paproject.backend.model.entities.User;
 import es.udc.paproject.backend.model.entities.UserDao;
 import org.springframework.web.multipart.MultipartFile;
@@ -95,7 +97,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User changeRole(Long id, String role)
-		throws InstanceNotFoundException {
+		throws InstanceNotFoundException, IncorrectRoleException {
 		
 		User user = permissionChecker.checkUser(id);
 		
@@ -108,9 +110,25 @@ public class UserServiceImpl implements UserService {
 				if("p".equals(role)){
 					user.setRole(User.RoleType.PRODUCT_OWNER);
 					System.out.println(user.getRole().toString());
+				}else{
+					throw new IncorrectRoleException();
 				}
 			}
 		}	
+
+		return user;
+	}
+
+	@Override
+	public User changeLanguage(Long id, String role)
+		throws InstanceNotFoundException, IncorrectLanguageException {
+		
+		User user = permissionChecker.checkUser(id);
+		if(role.equals("en") || role.equals("es") || role.equals("gl") ){
+			user.setLanguage(role);
+		}else{
+			throw new IncorrectLanguageException();
+		}
 
 		return user;
 	}

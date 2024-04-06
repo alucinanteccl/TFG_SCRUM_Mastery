@@ -11,6 +11,8 @@ import es.udc.paproject.backend.model.exceptions.InstanceNotFoundException;
 import es.udc.paproject.backend.model.entities.User;
 import es.udc.paproject.backend.model.exceptions.IncorrectLoginException;
 import es.udc.paproject.backend.model.exceptions.IncorrectPasswordException;
+import es.udc.paproject.backend.model.exceptions.IncorrectLanguageException;
+import es.udc.paproject.backend.model.exceptions.IncorrectRoleException;
 import es.udc.paproject.backend.model.services.UserService;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -190,6 +192,91 @@ public class UserServiceTest {
 
 		User updatedUser = userService.loginFromId(user.getId());
 		assertNotNull(updatedUser.getImage());
+	}
+
+	@Test
+	public void testChangeRole() throws Exception {
+		User user = new User();
+		user.setUserName("josealonso");
+		user.setPassword("pwd");
+		user.setFirstName("Jose");
+		user.setLastName("Alonso");
+		user.setEmail("jose.alonso@udc.es");
+		user.setImage("josealonso".getBytes());
+
+		userService.signUp(user);
+
+		User loggedInUser = userService.loginFromId(user.getId());
+
+		byte[] imageContent = "fake image content".getBytes();
+		MockMultipartFile image = new MockMultipartFile("image", "image.png", "image/png", imageContent);
+
+		userService.changeRole(user.getId(), "p");
+
+		User updatedUser = userService.loginFromId(user.getId());
+		assertEquals(updatedUser.getRole(),User.RoleType.PRODUCT_OWNER);
+	}
+
+	@Test
+	public void testChangeIncorrectRole() throws Exception{
+		User user = new User();
+		user.setUserName("josealonso");
+		user.setPassword("pwd");
+		user.setFirstName("Jose");
+		user.setLastName("Alonso");
+		user.setEmail("jose.alonso@udc.es");
+		user.setImage("josealonso".getBytes());
+
+		userService.signUp(user);
+
+		User loggedInUser = userService.loginFromId(user.getId());
+
+		assertThrows(IncorrectRoleException.class, () -> {
+			userService.changeRole(user.getId(), "fghjk");
+		});
+	}
+
+
+	@Test
+	public void testChangeLanguage() throws Exception {
+		User user = new User();
+		user.setUserName("josealonso");
+		user.setPassword("pwd");
+		user.setFirstName("Jose");
+		user.setLastName("Alonso");
+		user.setEmail("jose.alonso@udc.es");
+		user.setImage("josealonso".getBytes());
+
+		userService.signUp(user);
+
+		User loggedInUser = userService.loginFromId(user.getId());
+
+		byte[] imageContent = "fake image content".getBytes();
+		MockMultipartFile image = new MockMultipartFile("image", "image.png", "image/png", imageContent);
+
+		userService.changeLanguage(user.getId(), "en");
+
+		User updatedUser = userService.loginFromId(user.getId());
+		assertEquals(updatedUser.getLanguage(),"en");
+	}
+
+	@Test
+	public void testChangeIncorrectLanguage() throws Exception{
+		User user = new User();
+		user.setUserName("josealonso");
+		user.setPassword("pwd");
+		user.setFirstName("Jose");
+		user.setLastName("Alonso");
+		user.setEmail("jose.alonso@udc.es");
+		user.setImage("josealonso".getBytes());
+
+		userService.signUp(user);
+
+		User loggedInUser = userService.loginFromId(user.getId());
+
+		assertThrows(IncorrectLanguageException.class, () -> {
+			userService.changeLanguage(user.getId(), "fghjk");
+		});
 	}
 
 }

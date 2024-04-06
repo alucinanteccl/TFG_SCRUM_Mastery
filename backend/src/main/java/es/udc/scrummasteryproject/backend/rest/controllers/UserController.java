@@ -33,6 +33,8 @@ import es.udc.paproject.backend.model.exceptions.InstanceNotFoundException;
 import es.udc.paproject.backend.model.entities.User;
 import es.udc.paproject.backend.model.exceptions.IncorrectLoginException;
 import es.udc.paproject.backend.model.exceptions.IncorrectPasswordException;
+import es.udc.paproject.backend.model.exceptions.IncorrectRoleException;
+import es.udc.paproject.backend.model.exceptions.IncorrectLanguageException;
 import es.udc.paproject.backend.model.exceptions.PermissionException;
 import es.udc.paproject.backend.model.services.UserService;
 import es.udc.paproject.backend.rest.common.ErrorsDto;
@@ -41,6 +43,7 @@ import es.udc.paproject.backend.rest.common.JwtInfo;
 import es.udc.paproject.backend.rest.dtos.AuthenticatedUserDto;
 import es.udc.paproject.backend.rest.dtos.ChangePasswordParamsDto;
 import es.udc.paproject.backend.rest.dtos.ChangeRoleParamsDto;
+import es.udc.paproject.backend.rest.dtos.ChangeLanguageParamsDto;
 import es.udc.paproject.backend.rest.dtos.LoginParamsDto;
 import es.udc.paproject.backend.rest.dtos.UserDto;
 import es.udc.paproject.backend.rest.dtos.UserConversor;
@@ -151,13 +154,25 @@ public class UserController {
 
 	@PostMapping("/{id}/changeRole")
 	public UserDto changeRole(@RequestAttribute Long userId, @PathVariable Long id, @RequestBody ChangeRoleParamsDto params) 
-    	throws PermissionException, InstanceNotFoundException, IncorrectPasswordException {
+    	throws PermissionException, InstanceNotFoundException, IncorrectPasswordException, IncorrectRoleException {
     
     	if (!id.equals(userId)) {
         	throw new PermissionException();
     	}
 		
     	User user = userService.changeRole(id, params.getRole());
+		return UserConversor.toUserDto(user);
+	}
+
+	@PostMapping("/{id}/changeLanguage")
+	public UserDto changeRole(@RequestAttribute Long userId, @PathVariable Long id, @RequestBody ChangeLanguageParamsDto params) 
+    	throws PermissionException, InstanceNotFoundException, IncorrectPasswordException, IncorrectLanguageException {
+    
+    	if (!id.equals(userId)) {
+        	throw new PermissionException();
+    	}
+		
+    	User user = userService.changeLanguage(id, params.getLanguage());
 		return UserConversor.toUserDto(user);
 	}
 

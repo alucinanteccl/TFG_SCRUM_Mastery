@@ -7,16 +7,22 @@ import { Errors } from '../../common';
 import * as actions from '../actions';
 import * as selectors from '../selectors';
 import image from "./Resources/default.jpg";
+import imagees from "./Resources/españa.png";
+import imagegl from "./Resources/galicia.png";
+import imageen from "./Resources/english.png";
 import image2 from "./Resources/edit.png";
+import { initReactIntl } from '../../../i18n';
 
 
 const UserProfile = () => {
+    const { locale, messages } = initReactIntl();
     const inputRef = useRef(null);
     const user = useSelector(selectors.getUser);
     const dispatch = useDispatch();
     const [backendErrors, setBackendErrors] = useState(null);
     let form;
     let formrole;
+    let formlanguage;
 
     const handleClick = () => {
         inputRef.current.click();
@@ -43,9 +49,21 @@ const UserProfile = () => {
     }
 
     const handleSubmitRole = (role) => {
-       
+
         if (formrole.checkValidity()) {
             dispatch(actions.changeRole(user, role,
+                () => { },
+                errors => setBackendErrors(errors)));
+        } else {
+            setBackendErrors(null);
+            form.classList.add('was-validated');
+        }
+    }
+
+    const handleSubmitLanguage = (language) => {
+
+        if (formlanguage.checkValidity()) {
+            dispatch(actions.changeLanguage(user, language,
                 () => { },
                 errors => setBackendErrors(errors)));
         } else {
@@ -124,11 +142,37 @@ const UserProfile = () => {
                                 </div>
                             </div>
                         </form>
-
-
+                        <label htmlFor="firstName" className="col-md-12 col-form-label font-weight-bold">
+                            <FormattedMessage id="project.global.fields.language" />:
+                        </label>
+                        <form ref={node => formlanguage = node} className="needs-validation" noValidate>
+                            <div class="dropdown">
+                                {user.language ?
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {user.language}
+                                    </button>
+                                    :
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {locale}
+                                    </button>
+                                }
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <label class="dropdown-item d-flex" onClick={() => handleSubmitLanguage("gl")}>
+                                        <img src={imagegl} alt="" height={15} width={20} className='mr-2 mt-1' />
+                                        Galego
+                                    </label>
+                                    <label class="dropdown-item" onClick={() => handleSubmitLanguage("es")}>
+                                        <img src={imagees} alt="" height={20} width={20} className='mr-2' />
+                                        Español
+                                    </label>
+                                    <label class="dropdown-item" onClick={() => handleSubmitLanguage("en")}>
+                                        <img src={imageen} alt="" height={20} width={20} className='mr-2' />
+                                        English
+                                    </label>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-
-
                 </div>
             </div>
         </div >

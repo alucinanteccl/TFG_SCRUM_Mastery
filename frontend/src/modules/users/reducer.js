@@ -28,6 +28,9 @@ const user = (state = initialState.user, action) => {
         case actionTypes.CHANGE_ROLE_COMPLETED:
             return action.user;
 
+        case actionTypes.CHANGE_LANGUAGE_COMPLETED:
+            return action.user;
+
         default:
             return state;
 

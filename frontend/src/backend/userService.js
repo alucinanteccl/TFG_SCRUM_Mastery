@@ -58,6 +58,14 @@ export const changeRole = (id, role, onSuccess, onErrors) => {
     appFetch(path, options, onSuccess, onErrors);
 };
 
+export const changeLanguage = (id, language, onSuccess, onErrors) => {
+    const path = `/users/${id}/changeLanguage`;
+    const body = { language }; 
+    const options = config('POST', body);
+
+    appFetch(path, options, onSuccess, onErrors);
+};
+
 export const changeUserImage = (user, file, onSuccess) => {
     const formData = new FormData();
     formData.append('file', file);

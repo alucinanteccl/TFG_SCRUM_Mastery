@@ -34,6 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers(HttpMethod.PUT, "/users/*").permitAll()
 			.antMatchers(HttpMethod.PUT, "/users/*/changeImage").permitAll()
 			.antMatchers(HttpMethod.POST, "/users/*/changeRole").permitAll()
+			.antMatchers(HttpMethod.POST, "/users/*/changeLanguage").permitAll()
 			.antMatchers(HttpMethod.POST, "/users/*/changePassword").permitAll()
 			.anyRequest().denyAll();
 

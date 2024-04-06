@@ -17,6 +17,7 @@ public class User {
 	private String firstName;
 	private String lastName;
 	private String email;
+	private String language;
 	private RoleType role;
 	@Lob
 	private byte[] image;
@@ -81,6 +82,14 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
 	}
 
 	public RoleType getRole() {

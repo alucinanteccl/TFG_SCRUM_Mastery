@@ -75,6 +75,19 @@ export const changeImage = (user, file, onSuccess, onErrors) => dispatch =>
         },
         onErrors);
 
+
+export const changeLanguageCompleted = user => ({
+    type: actionTypes.CHANGE_LANGUAGE_COMPLETED,
+    user
+})
+
+export const changeLanguage = (user, language, onSuccess, onErrors) => dispatch =>
+    backend.userService.changeLanguage(user.id, language,
+        (user) => {
+            dispatch(changeLanguageCompleted(user));
+            onSuccess();
+        }, onErrors);
+
 export const changeRoleCompleted = user => ({
     type: actionTypes.CHANGE_ROLE_COMPLETED,
     user

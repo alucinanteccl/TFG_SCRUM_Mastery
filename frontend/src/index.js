@@ -36,4 +36,3 @@ root.render(
             </IntlProvider>
         </Provider>
     </React.StrictMode>);
-
